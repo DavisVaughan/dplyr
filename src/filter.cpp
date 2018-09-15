@@ -88,8 +88,8 @@ public:
     old_indices(ngroups),
     tests(ngroups),
     new_indices(ngroups),
-    k(0),
-    dense(ngroups, false)
+    dense(ngroups, false),
+    k(0)
   {}
 
   // set the group i to be empty
