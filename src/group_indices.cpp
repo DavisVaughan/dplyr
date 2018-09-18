@@ -530,10 +530,10 @@ GroupedDataFrame::GroupedDataFrame(DataFrame x):
   int ng = ngroups();
   List idx = indices();
   for (int i = 0; i < ng; i++) rows_in_groups += Rf_length(idx[i]);
-  if (data_.nrows() != rows_in_groups) {
-    bad_arg(".data", "is a corrupt grouped_df, contains {rows} rows, and {group_rows} rows in groups",
-            _["rows"] = data_.nrows(), _["group_rows"] = rows_in_groups);
-  }
+  // if (data_.nrows() != rows_in_groups) {
+  //   bad_arg(".data", "is a corrupt grouped_df, contains {rows} rows, and {group_rows} rows in groups",
+  //           _["rows"] = data_.nrows(), _["group_rows"] = rows_in_groups);
+  // }
 }
 
 GroupedDataFrame::GroupedDataFrame(DataFrame x, const GroupedDataFrame& model):
