@@ -237,6 +237,8 @@ mutate_cols <- function(.data, ...) {
       # TODO: reinject hybrid evaluation at the R level
       chunks <- mask$eval_all_mutate(dots[[i]])
 
+      mask$reset_info_across_c()
+
       if (is.null(chunks)) {
         if (!is.null(dots_names) && dots_names[i] != "") {
           new_columns[[dots_names[i]]] <- zap()

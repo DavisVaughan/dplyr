@@ -105,6 +105,10 @@ DataMask <- R6Class("DataMask",
       eval_tidy(quo(tibble(!!!syms(vars))), private$mask)
     },
 
+    pick_list = function(vars) {
+      eval_tidy(quo(list2(!!!syms(vars))), private$mask)
+    },
+
     current_rows = function() {
       private$rows[[self$get_current_group()]]
     },
@@ -134,6 +138,18 @@ DataMask <- R6Class("DataMask",
 
     get_rows = function() {
       private$rows
+    },
+
+    get_info_across_c = function() {
+      private$info_across_c
+    },
+
+    set_info_across_c = function(names, ptype) {
+      private$info_across_c <- list(names = names, ptype = ptype)
+    },
+
+    reset_info_across_c = function() {
+      private$info_across_c <- NULL
     }
 
   ),
@@ -145,6 +161,7 @@ DataMask <- R6Class("DataMask",
     used = logical(),
     resolved = list(),
     which_used = integer(),
+    info_across_c = NULL,
     rows = NULL,
     keys = NULL,
     bindings = NULL,

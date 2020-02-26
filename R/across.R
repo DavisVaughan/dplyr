@@ -117,3 +117,32 @@ across <- function(cols = everything(), fns = NULL, names = NULL) {
   )
   as_tibble(cols)
 }
+
+across_c <- function(cols = everything()) {
+  mask <- peek_mask()
+  info <- mask$get_info_across_c()
+
+  if (is.null(info)) {
+    data <- mask$full_data()
+
+    vars <- tidyselect::eval_select(
+      expr({{ cols }}),
+      data[, setdiff(names(data), group_vars(data)), drop = FALSE]
+    )
+
+    data_vars <- data[, vars, drop = FALSE]
+
+    names <- names(vars)
+    ptype <- vec_ptype_common(!!! data_vars)
+
+    mask$set_info_across_c(names, ptype)
+  } else {
+    names <- info$names
+    ptype <- info$ptype
+  }
+
+  cols <- mask$pick_list(names)
+
+  vec_c(!!! cols, .ptype = ptype)
+}
+
