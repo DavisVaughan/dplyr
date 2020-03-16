@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Argument type: tidy-select — dplyr_tidy_select • dplyr</title>
+<title>Evaluate, compare, benchmark operations of a set of srcs. — bench_compare • dplyr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,12 +47,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="Argument type: tidy-select — dplyr_tidy_select" />
-<meta property="og:description" content="This page the describes the &amp;lt;tidy-select&amp;gt; argument modifier which indicates
-the argument uses tidy evaluation with tidy selection. Tidy selection
-provides a concise DSL for selecting variables based on their names.
-If you've never head of tidy evaluation before, start with
-vignette(&quot;programming&quot;)." />
+<meta property="og:title" content="Evaluate, compare, benchmark operations of a set of srcs. — bench_compare" />
+<meta property="og:description" content="
+
+These functions are deprecated because we now believe that you're
+better of performing the comparisons directly, yourself, in order to
+generate more informative test failures." />
 <meta property="og:image" content="https://dplyr.tidyverse.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -189,62 +189,78 @@ vignette(&quot;programming&quot;)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Argument type: tidy-select</h1>
-    <small class="dont-index">Source: <a href='https://github.com/tidyverse/dplyr/blob/master/R/doc-params.R'><code>R/doc-params.R</code></a></small>
-    <div class="hidden name"><code>dplyr_tidy_select.Rd</code></div>
+    <h1>Evaluate, compare, benchmark operations of a set of srcs.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/tidyverse/dplyr/blob/master/R/deprec-bench-compare.r'><code>R/deprec-bench-compare.r</code></a></small>
+    <div class="hidden name"><code>bench_compare.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This page the describes the <code>&lt;tidy-select&gt;</code> argument modifier which indicates
-the argument uses tidy evaluation with <strong>tidy selection</strong>. Tidy selection
-provides a concise DSL for selecting variables based on their names.
-If you've never head of tidy evaluation before, start with
-<code><a href='../articles/programming.html'>vignette("programming")</a></code>.</p>
+    <p><img src='figures/lifecycle-deprecated.svg' alt='Deprecated lifecycle' />
+
+These functions are deprecated because we now believe that you're
+better of performing the comparisons directly, yourself, in order to
+generate more informative test failures.</p>
     </div>
 
+    <pre class="usage"><span class='fu'>bench_tbls</span>(<span class='no'>tbls</span>, <span class='no'>op</span>, <span class='no'>...</span>, <span class='kw'>times</span> <span class='kw'>=</span> <span class='fl'>10</span>)
 
+<span class='fu'>compare_tbls</span>(<span class='no'>tbls</span>, <span class='no'>op</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compare</span> <span class='kw'>=</span> <span class='no'>equal_data_frame</span>, <span class='no'>...</span>)
 
-    <h2 class="hasAnchor" id="general-usage"><a class="anchor" href="#general-usage"></a>General usage</h2>
+<span class='fu'>compare_tbls2</span>(<span class='no'>tbls_x</span>, <span class='no'>tbls_y</span>, <span class='no'>op</span>, <span class='kw'>ref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>compare</span> <span class='kw'>=</span> <span class='no'>equal_data_frame</span>, <span class='no'>...</span>)
 
-    <p>If you have a data frame with variables <code>apple</code>, <code>banana</code>, <code>cantelope</code>,
-<code>date</code>, <code>eggplant</code>, <code>fig</code>, <code>grape</code> you can:</p><ul>
-<li><p>Select individual variables with their name: e.g. <code><a href='https://rdrr.io/r/base/c.html'>c(apple, fig, grape)</a></code>.</p></li>
-<li><p>Select data-variables stored in a env-variable with <code>all_of()</code> (which
-will error if a variable is not found) or <code>any_of()</code> (which is
-relaxed and will silently drop missing variables), e.g.
-if <code>vars &lt;- c("apple", "fig", "peach")</code>, then <code>all_of(vars)</code> will
-error; <code>any_of(vars)</code> will select <code>apple</code> and <code>fig</code>.</p></li>
-<li><p>Select contiguous variables with <code>:</code>, e.g. <code>apple:date</code>.</p></li>
-<li><p>Select variables with named-based helpers: e.g. <code><a href='https://tidyselect.r-lib.org/reference/select_helpers.html'>ends_with("a")</a></code>,
-<code><a href='https://tidyselect.r-lib.org/reference/select_helpers.html'>contains("g")</a></code>. See full list in <a href='https://tidyselect.r-lib.org/reference/select_helpers.html'>tidyselect::select_helpers</a>.</p></li>
-<li><p>Select variables of a given type with a <code>is</code> function: <code>is.numeric</code>,
-<code>is.factor</code>, <code>is.character</code>, etc.</p></li>
-<li><p>Invert a selection with <code>!</code>: <code>!is.numeric</code>, or <code>!contains("x")</code>.</p></li>
-<li><p>Create logical combination with <code>|</code> and <code>&amp;</code>:
-<code>starts_with("a") | starts_with("b")</code>, <code>contains("x") &amp; is.numeric</code></p></li>
-<li><p>Remove variables from a collection with <code>&amp;</code> and <code>!</code>:
-<code>is.numeric &amp; !starts_with("a")</code></p></li>
-</ul>
+<span class='fu'>eval_tbls</span>(<span class='no'>tbls</span>, <span class='no'>op</span>)
 
-    <h2 class="hasAnchor" id="indirection"><a class="anchor" href="#indirection"></a>Indirection</h2>
+<span class='fu'>eval_tbls2</span>(<span class='no'>tbls_x</span>, <span class='no'>tbls_y</span>, <span class='no'>op</span>)</pre>
 
-    <p>There are two main cases:</p><ul>
-<li><p>If you have a character vector of column names, use <code>all_of()</code>
-or <code>any_of()</code>, depending on whether or not you want unknown variable
-names to cause an error, e.g <code><a href='select.html'>select(df, all_of(vars))</a></code>,
-<code><a href='select.html'>select(df, -any_of(vars))</a></code>.</p></li>
-<li><p>If you you want the user to supply a tidyselect specification in a
-function argument, embrace the function argument, e.g
-<code><a href='select.html'>select(df, {{ vars }})</a></code>.</p></li>
-</ul>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>tbls, tbls_x, tbls_y</th>
+      <td><p>A list of <code><a href='tbl.html'>tbl()</a></code>s.</p></td>
+    </tr>
+    <tr>
+      <th>op</th>
+      <td><p>A function with a single argument, called often with each
+element of <code>tbls</code>.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>For <code>compare_tbls()</code>: additional parameters passed on the
+<code>compare()</code> function</p>
+<p>For <code>bench_tbls()</code>: additional benchmarks to run.</p></td>
+    </tr>
+    <tr>
+      <th>times</th>
+      <td><p>For benchmarking, the number of times each operation is
+repeated.</p></td>
+    </tr>
+    <tr>
+      <th>ref</th>
+      <td><p>For checking, a data frame to test results against. If not
+supplied, defaults to the results from the first <code>src</code>.</p></td>
+    </tr>
+    <tr>
+      <th>compare</th>
+      <td><p>A function used to compare the results. Defaults to
+<code>equal_data_frame</code> which ignores the order of rows and columns.</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>eval_tbls()</code>: a list of data frames.</p>
+<p><code>compare_tbls()</code>: an invisible <code>TRUE</code> on success, otherwise
+an error is thrown.</p>
+<p><code>bench_tbls()</code>: an object of class
+<code><a href='https://rdrr.io/pkg/microbenchmark/man/microbenchmark.html'>microbenchmark::microbenchmark()</a></code></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#general-usage">General usage</a></li>
-      <li><a href="#indirection">Indirection</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
     </ul>
 
   </div>
