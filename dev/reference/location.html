@@ -220,86 +220,86 @@ frames</p>
     <pre class="examples"><div class='input'><span class='fu'>location</span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `location()` is deprecated as of dplyr 1.0.0.</span>
 #&gt; <span class='warning'>Please use `lobst::ref()` instead.</span>
 #&gt; <span class='warning'><span style='color: #555555;'>This warning is displayed once every 8 hours.</span><span></span>
-#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='output co'>#&gt; &lt;0x7febe3313588&gt;
+#&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='output co'>#&gt; &lt;0x7f9b13bdba08&gt;
 #&gt; Variables:
-#&gt;  * mpg:       &lt;0x7febe0371450&gt;
-#&gt;  * cyl:       &lt;0x7febe0359e20&gt;
-#&gt;  * disp:      &lt;0x7febe0359f50&gt;
-#&gt;  * hp:        &lt;0x7febe037b9a0&gt;
-#&gt;  * drat:      &lt;0x7febe037bad0&gt;
-#&gt;  * wt:        &lt;0x7febe03618d0&gt;
-#&gt;  * qsec:      &lt;0x7febe0361a00&gt;
-#&gt;  * vs:        &lt;0x7febe0378c10&gt;
-#&gt;  * am:        &lt;0x7febe0378d40&gt;
-#&gt;  * gear:      &lt;0x7febdd4f3980&gt;
-#&gt;  * carb:      &lt;0x7febdd4f3ab0&gt;
+#&gt;  * mpg:       &lt;0x7f9b15c43e40&gt;
+#&gt;  * cyl:       &lt;0x7f9b15c59610&gt;
+#&gt;  * disp:      &lt;0x7f9b15c41720&gt;
+#&gt;  * hp:        &lt;0x7f9b15c70dd0&gt;
+#&gt;  * drat:      &lt;0x7f9b15c70f00&gt;
+#&gt;  * wt:        &lt;0x7f9b15c5e240&gt;
+#&gt;  * qsec:      &lt;0x7f9b15c5e370&gt;
+#&gt;  * vs:        &lt;0x7f9b15c38fa0&gt;
+#&gt;  * am:        &lt;0x7f9b15c390d0&gt;
+#&gt;  * gear:      &lt;0x7f9b15c6cab0&gt;
+#&gt;  * carb:      &lt;0x7f9b15c6cbe0&gt;
 #&gt; Attributes:
-#&gt;  * names:     &lt;0x7febe33134d8&gt;
-#&gt;  * row.names: &lt;0x7febe03784f0&gt;
-#&gt;  * class:     &lt;0x7febe1cea638&gt;</div><div class='input'><span class='co'># -&gt;</span>
-<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lobstr/man/ref.html'>ref</a></span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; </span><span style='color: #BBBB00;'>█</span><span> [</span><span style='font-weight: bold;'>1</span><span>:0x7febe3313588] &lt;df[,11]&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>mpg</span><span> = [</span><span style='font-weight: bold;'>2</span><span>:0x7febe0371450] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>cyl</span><span> = [</span><span style='font-weight: bold;'>3</span><span>:0x7febe0359e20] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>disp</span><span> = [</span><span style='font-weight: bold;'>4</span><span>:0x7febe0359f50] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>hp</span><span> = [</span><span style='font-weight: bold;'>5</span><span>:0x7febe037b9a0] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>drat</span><span> = [</span><span style='font-weight: bold;'>6</span><span>:0x7febe037bad0] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>wt</span><span> = [</span><span style='font-weight: bold;'>7</span><span>:0x7febe03618d0] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>qsec</span><span> = [</span><span style='font-weight: bold;'>8</span><span>:0x7febe0361a00] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>vs</span><span> = [</span><span style='font-weight: bold;'>9</span><span>:0x7febe0378c10] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>am</span><span> = [</span><span style='font-weight: bold;'>10</span><span>:0x7febe0378d40] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>gear</span><span> = [</span><span style='font-weight: bold;'>11</span><span>:0x7febdd4f3980] &lt;dbl&gt; 
-#&gt; └─</span><span style='color: #555555;font-style: italic;'>carb</span><span> = [</span><span style='font-weight: bold;'>12</span><span>:0x7febdd4f3ab0] &lt;dbl&gt; </div><div class='input'>
+#&gt;  * names:     &lt;0x7f9b13bdbc18&gt;
+#&gt;  * row.names: &lt;0x7f9b15c2a080&gt;
+#&gt;  * class:     &lt;0x7f9b13c4f160&gt;</div><div class='input'><span class='co'># -&gt;</span>
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lobstr/man/ref.html'>ref</a></span>(<span class='no'>mtcars</span>)</div><div class='output co'>#&gt; </span><span style='color: #BBBB00;'>█</span><span> [</span><span style='font-weight: bold;'>1</span><span>:0x7f9b13bdba08] &lt;df[,11]&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>mpg</span><span> = [</span><span style='font-weight: bold;'>2</span><span>:0x7f9b15c43e40] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>cyl</span><span> = [</span><span style='font-weight: bold;'>3</span><span>:0x7f9b15c59610] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>disp</span><span> = [</span><span style='font-weight: bold;'>4</span><span>:0x7f9b15c41720] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>hp</span><span> = [</span><span style='font-weight: bold;'>5</span><span>:0x7f9b15c70dd0] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>drat</span><span> = [</span><span style='font-weight: bold;'>6</span><span>:0x7f9b15c70f00] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>wt</span><span> = [</span><span style='font-weight: bold;'>7</span><span>:0x7f9b15c5e240] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>qsec</span><span> = [</span><span style='font-weight: bold;'>8</span><span>:0x7f9b15c5e370] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>vs</span><span> = [</span><span style='font-weight: bold;'>9</span><span>:0x7f9b15c38fa0] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>am</span><span> = [</span><span style='font-weight: bold;'>10</span><span>:0x7f9b15c390d0] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>gear</span><span> = [</span><span style='font-weight: bold;'>11</span><span>:0x7f9b15c6cab0] &lt;dbl&gt; 
+#&gt; └─</span><span style='color: #555555;font-style: italic;'>carb</span><span> = [</span><span style='font-weight: bold;'>12</span><span>:0x7f9b15c6cbe0] &lt;dbl&gt; </div><div class='input'>
 <span class='no'>mtcars2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mutate.html'>mutate</a></span>(<span class='no'>mtcars</span>, <span class='kw'>cyl2</span> <span class='kw'>=</span> <span class='no'>cyl</span> * <span class='fl'>2</span>)
 <span class='co'># -&gt;</span>
-<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lobstr/man/ref.html'>ref</a></span>(<span class='no'>mtcars2</span>)</div><div class='output co'>#&gt; </span><span style='color: #BBBB00;'>█</span><span> [</span><span style='font-weight: bold;'>1</span><span>:0x7febe5844588] &lt;df[,12]&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>mpg</span><span> = [</span><span style='font-weight: bold;'>2</span><span>:0x7febe0371450] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>cyl</span><span> = [</span><span style='font-weight: bold;'>3</span><span>:0x7febe0359e20] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>disp</span><span> = [</span><span style='font-weight: bold;'>4</span><span>:0x7febe0359f50] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>hp</span><span> = [</span><span style='font-weight: bold;'>5</span><span>:0x7febe037b9a0] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>drat</span><span> = [</span><span style='font-weight: bold;'>6</span><span>:0x7febe037bad0] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>wt</span><span> = [</span><span style='font-weight: bold;'>7</span><span>:0x7febe03618d0] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>qsec</span><span> = [</span><span style='font-weight: bold;'>8</span><span>:0x7febe0361a00] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>vs</span><span> = [</span><span style='font-weight: bold;'>9</span><span>:0x7febe0378c10] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>am</span><span> = [</span><span style='font-weight: bold;'>10</span><span>:0x7febe0378d40] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>gear</span><span> = [</span><span style='font-weight: bold;'>11</span><span>:0x7febdd4f3980] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>carb</span><span> = [</span><span style='font-weight: bold;'>12</span><span>:0x7febdd4f3ab0] &lt;dbl&gt; 
-#&gt; └─</span><span style='color: #555555;font-style: italic;'>cyl2</span><span> = [</span><span style='font-weight: bold;'>13</span><span>:0x7febe04abb40] &lt;dbl&gt; </div><div class='input'>
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lobstr/man/ref.html'>ref</a></span>(<span class='no'>mtcars2</span>)</div><div class='output co'>#&gt; </span><span style='color: #BBBB00;'>█</span><span> [</span><span style='font-weight: bold;'>1</span><span>:0x7f9b176f7628] &lt;df[,12]&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>mpg</span><span> = [</span><span style='font-weight: bold;'>2</span><span>:0x7f9b15c43e40] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>cyl</span><span> = [</span><span style='font-weight: bold;'>3</span><span>:0x7f9b15c59610] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>disp</span><span> = [</span><span style='font-weight: bold;'>4</span><span>:0x7f9b15c41720] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>hp</span><span> = [</span><span style='font-weight: bold;'>5</span><span>:0x7f9b15c70dd0] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>drat</span><span> = [</span><span style='font-weight: bold;'>6</span><span>:0x7f9b15c70f00] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>wt</span><span> = [</span><span style='font-weight: bold;'>7</span><span>:0x7f9b15c5e240] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>qsec</span><span> = [</span><span style='font-weight: bold;'>8</span><span>:0x7f9b15c5e370] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>vs</span><span> = [</span><span style='font-weight: bold;'>9</span><span>:0x7f9b15c38fa0] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>am</span><span> = [</span><span style='font-weight: bold;'>10</span><span>:0x7f9b15c390d0] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>gear</span><span> = [</span><span style='font-weight: bold;'>11</span><span>:0x7f9b15c6cab0] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>carb</span><span> = [</span><span style='font-weight: bold;'>12</span><span>:0x7f9b15c6cbe0] &lt;dbl&gt; 
+#&gt; └─</span><span style='color: #555555;font-style: italic;'>cyl2</span><span> = [</span><span style='font-weight: bold;'>13</span><span>:0x7f9b0fce79b0] &lt;dbl&gt; </div><div class='input'>
 <span class='fu'>changes</span>(<span class='no'>mtcars</span>, <span class='no'>mtcars2</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: `changes()` is deprecated as of dplyr 1.0.0.</span>
 #&gt; <span class='warning'>Please use `lobstr::ref()` instead.</span>
 #&gt; <span class='warning'></span><span style='color: #555555;'>This warning is displayed once every 8 hours.</span><span></span>
 #&gt; <span class='warning'></span><span style='color: #555555;'>Call `lifecycle::last_warnings()` to see where this warning was generated.</span><span></span></div><div class='output co'>#&gt; Changed variables:
 #&gt;       old     new           
-#&gt; cyl2  &lt;added&gt; 0x7febe04abb40
+#&gt; cyl2  &lt;added&gt; 0x7f9b0fce79b0
 #&gt; 
 #&gt; Changed attributes:
 #&gt;       old            new           
-#&gt; names 0x7febe33134d8 0x7febe5844428</div><div class='input'><span class='co'># -&gt;</span>
-<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lobstr/man/ref.html'>ref</a></span>(<span class='no'>mtcars</span>, <span class='no'>mtcars2</span>)</div><div class='output co'>#&gt; </span><span style='color: #BBBB00;'>█</span><span> [</span><span style='font-weight: bold;'>1</span><span>:0x7febe3313588] &lt;df[,11]&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>mpg</span><span> = [</span><span style='font-weight: bold;'>2</span><span>:0x7febe0371450] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>cyl</span><span> = [</span><span style='font-weight: bold;'>3</span><span>:0x7febe0359e20] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>disp</span><span> = [</span><span style='font-weight: bold;'>4</span><span>:0x7febe0359f50] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>hp</span><span> = [</span><span style='font-weight: bold;'>5</span><span>:0x7febe037b9a0] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>drat</span><span> = [</span><span style='font-weight: bold;'>6</span><span>:0x7febe037bad0] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>wt</span><span> = [</span><span style='font-weight: bold;'>7</span><span>:0x7febe03618d0] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>qsec</span><span> = [</span><span style='font-weight: bold;'>8</span><span>:0x7febe0361a00] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>vs</span><span> = [</span><span style='font-weight: bold;'>9</span><span>:0x7febe0378c10] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>am</span><span> = [</span><span style='font-weight: bold;'>10</span><span>:0x7febe0378d40] &lt;dbl&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>gear</span><span> = [</span><span style='font-weight: bold;'>11</span><span>:0x7febdd4f3980] &lt;dbl&gt; 
-#&gt; └─</span><span style='color: #555555;font-style: italic;'>carb</span><span> = [</span><span style='font-weight: bold;'>12</span><span>:0x7febdd4f3ab0] &lt;dbl&gt; 
+#&gt; names 0x7f9b13bdbc18 0x7f9b176f7578</div><div class='input'><span class='co'># -&gt;</span>
+<span class='kw pkg'>lobstr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lobstr/man/ref.html'>ref</a></span>(<span class='no'>mtcars</span>, <span class='no'>mtcars2</span>)</div><div class='output co'>#&gt; </span><span style='color: #BBBB00;'>█</span><span> [</span><span style='font-weight: bold;'>1</span><span>:0x7f9b13bdba08] &lt;df[,11]&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>mpg</span><span> = [</span><span style='font-weight: bold;'>2</span><span>:0x7f9b15c43e40] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>cyl</span><span> = [</span><span style='font-weight: bold;'>3</span><span>:0x7f9b15c59610] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>disp</span><span> = [</span><span style='font-weight: bold;'>4</span><span>:0x7f9b15c41720] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>hp</span><span> = [</span><span style='font-weight: bold;'>5</span><span>:0x7f9b15c70dd0] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>drat</span><span> = [</span><span style='font-weight: bold;'>6</span><span>:0x7f9b15c70f00] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>wt</span><span> = [</span><span style='font-weight: bold;'>7</span><span>:0x7f9b15c5e240] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>qsec</span><span> = [</span><span style='font-weight: bold;'>8</span><span>:0x7f9b15c5e370] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>vs</span><span> = [</span><span style='font-weight: bold;'>9</span><span>:0x7f9b15c38fa0] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>am</span><span> = [</span><span style='font-weight: bold;'>10</span><span>:0x7f9b15c390d0] &lt;dbl&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>gear</span><span> = [</span><span style='font-weight: bold;'>11</span><span>:0x7f9b15c6cab0] &lt;dbl&gt; 
+#&gt; └─</span><span style='color: #555555;font-style: italic;'>carb</span><span> = [</span><span style='font-weight: bold;'>12</span><span>:0x7f9b15c6cbe0] &lt;dbl&gt; 
 #&gt;  
-#&gt; </span><span style='color: #BBBB00;'>█</span><span> [</span><span style='font-weight: bold;'>13</span><span>:0x7febe5844588] &lt;df[,12]&gt; 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>mpg</span><span> = [</span><span style='color: #555555;'>2:0x7febe0371450</span><span>] 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>cyl</span><span> = [</span><span style='color: #555555;'>3:0x7febe0359e20</span><span>] 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>disp</span><span> = [</span><span style='color: #555555;'>4:0x7febe0359f50</span><span>] 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>hp</span><span> = [</span><span style='color: #555555;'>5:0x7febe037b9a0</span><span>] 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>drat</span><span> = [</span><span style='color: #555555;'>6:0x7febe037bad0</span><span>] 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>wt</span><span> = [</span><span style='color: #555555;'>7:0x7febe03618d0</span><span>] 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>qsec</span><span> = [</span><span style='color: #555555;'>8:0x7febe0361a00</span><span>] 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>vs</span><span> = [</span><span style='color: #555555;'>9:0x7febe0378c10</span><span>] 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>am</span><span> = [</span><span style='color: #555555;'>10:0x7febe0378d40</span><span>] 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>gear</span><span> = [</span><span style='color: #555555;'>11:0x7febdd4f3980</span><span>] 
-#&gt; ├─</span><span style='color: #555555;font-style: italic;'>carb</span><span> = [</span><span style='color: #555555;'>12:0x7febdd4f3ab0</span><span>] 
-#&gt; └─</span><span style='color: #555555;font-style: italic;'>cyl2</span><span> = [</span><span style='font-weight: bold;'>14</span><span>:0x7febe04abb40] &lt;dbl&gt; </div></span></pre>
+#&gt; </span><span style='color: #BBBB00;'>█</span><span> [</span><span style='font-weight: bold;'>13</span><span>:0x7f9b176f7628] &lt;df[,12]&gt; 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>mpg</span><span> = [</span><span style='color: #555555;'>2:0x7f9b15c43e40</span><span>] 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>cyl</span><span> = [</span><span style='color: #555555;'>3:0x7f9b15c59610</span><span>] 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>disp</span><span> = [</span><span style='color: #555555;'>4:0x7f9b15c41720</span><span>] 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>hp</span><span> = [</span><span style='color: #555555;'>5:0x7f9b15c70dd0</span><span>] 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>drat</span><span> = [</span><span style='color: #555555;'>6:0x7f9b15c70f00</span><span>] 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>wt</span><span> = [</span><span style='color: #555555;'>7:0x7f9b15c5e240</span><span>] 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>qsec</span><span> = [</span><span style='color: #555555;'>8:0x7f9b15c5e370</span><span>] 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>vs</span><span> = [</span><span style='color: #555555;'>9:0x7f9b15c38fa0</span><span>] 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>am</span><span> = [</span><span style='color: #555555;'>10:0x7f9b15c390d0</span><span>] 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>gear</span><span> = [</span><span style='color: #555555;'>11:0x7f9b15c6cab0</span><span>] 
+#&gt; ├─</span><span style='color: #555555;font-style: italic;'>carb</span><span> = [</span><span style='color: #555555;'>12:0x7f9b15c6cbe0</span><span>] 
+#&gt; └─</span><span style='color: #555555;font-style: italic;'>cyl2</span><span> = [</span><span style='font-weight: bold;'>14</span><span>:0x7f9b0fce79b0] &lt;dbl&gt; </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
