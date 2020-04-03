@@ -102,7 +102,7 @@ variables for a single operation." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="../articles/dplyr.html">Intro</a>
+  <a href="../articles/dplyr.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -115,19 +115,28 @@ variables for a single operation." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/grouping.html">Grouped data</a>
+    </li>
+    <li>
       <a href="../articles/two-table.html">Two-table verbs</a>
     </li>
     <li>
-      <a href="../articles/window-functions.html">Window functions</a>
+      <a href="../articles/base.html">dplyr &lt;-&gt; base R</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Automation</li>
+    <li>
+      <a href="../articles/colwise.html">colwise operations</a>
     </li>
     <li>
-      <a href="http://dbplyr.tidyverse.org/articles/dbplyr.html">Databases with dbplyr</a>
+      <a href="../articles/rowwise.html">rowwise operations</a>
     </li>
     <li>
       <a href="../articles/programming.html">Programming with dplyr</a>
     </li>
+    <li class="divider"></li>
     <li>
-      <a href="../articles/compatibility.html">Compatibility</a>
+      <a href="../articles/index.html">More...</a>
     </li>
   </ul>
 </li>
@@ -138,7 +147,7 @@ variables for a single operation." />
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Release notes</li>
+    <li class="dropdown-header">Releases</li>
     <li>
       <a href="https://www.tidyverse.org/articles/2019/10/dplyr-0-8-4/">Version 0.8.4</a>
     </li>
@@ -157,14 +166,15 @@ variables for a single operation." />
     <li>
       <a href="https://www.tidyverse.org/articles/2018/06/dplyr-0.7.5/">Version 0.7.5</a>
     </li>
+    <li class="divider"></li>
     <li>
-      <a href="../news/index.html">Change log</a>
+      <a href="../news/index.html">Changelog</a>
     </li>
   </ul>
 </li>
         <li>
-  <a href="https://github.com/tidyverse/dplyr">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/tidyverse/dplyr/">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -231,43 +241,43 @@ Supports purrr-style <code>~</code> syntax</p></td>
     <pre class="examples"><div class='input'><span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(<span class='kw'>g</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>3</span>), <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>5</span>))
 <span class='no'>df</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>with_groups</span>(<span class='no'>g</span>, <span class='no'>mutate</span>, <span class='kw'>x_mean</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 5 x 3</span><span>
-#&gt;       g      x x_mean
-#&gt; </span><span style='color: #555555;'>*</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>     1 0.043</span><span style='text-decoration: underline;'>8</span><span>  0.513
-#&gt; </span><span style='color: #555555;'>2</span><span>     1 0.982   0.513
-#&gt; </span><span style='color: #555555;'>3</span><span>     2 0.081</span><span style='text-decoration: underline;'>9</span><span>  0.312
-#&gt; </span><span style='color: #555555;'>4</span><span>     2 0.542   0.312
-#&gt; </span><span style='color: #555555;'>5</span><span>     3 0.610   0.610</div><div class='input'><span class='no'>df</span> <span class='kw'>%&gt;%</span>
+#&gt;       g     x x_mean
+#&gt; </span><span style='color: #555555;'>*</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     1 0.698  0.673
+#&gt; </span><span style='color: #555555;'>2</span><span>     1 0.649  0.673
+#&gt; </span><span style='color: #555555;'>3</span><span>     2 0.671  0.834
+#&gt; </span><span style='color: #555555;'>4</span><span>     2 0.997  0.834
+#&gt; </span><span style='color: #555555;'>5</span><span>     3 0.973  0.973</div><div class='input'><span class='no'>df</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>with_groups</span>(<span class='no'>g</span>, ~ <span class='fu'><a href='mutate.html'>mutate</a></span>(<span class='no'>.x</span>, <span class='kw'>x1</span> <span class='kw'>=</span> <span class='fu'><a href='nth.html'>first</a></span>(<span class='no'>x</span>)))</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 3</span><span>
-#&gt;       g      x     x1
-#&gt; </span><span style='color: #555555;'>*</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>     1 0.043</span><span style='text-decoration: underline;'>8</span><span> 0.043</span><span style='text-decoration: underline;'>8</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span>     1 0.982  0.043</span><span style='text-decoration: underline;'>8</span><span>
-#&gt; </span><span style='color: #555555;'>3</span><span>     2 0.081</span><span style='text-decoration: underline;'>9</span><span> 0.081</span><span style='text-decoration: underline;'>9</span><span>
-#&gt; </span><span style='color: #555555;'>4</span><span>     2 0.542  0.081</span><span style='text-decoration: underline;'>9</span><span>
-#&gt; </span><span style='color: #555555;'>5</span><span>     3 0.610  0.610 </div><div class='input'>
+#&gt;       g     x    x1
+#&gt; </span><span style='color: #555555;'>*</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     1 0.698 0.698
+#&gt; </span><span style='color: #555555;'>2</span><span>     1 0.649 0.698
+#&gt; </span><span style='color: #555555;'>3</span><span>     2 0.671 0.671
+#&gt; </span><span style='color: #555555;'>4</span><span>     2 0.997 0.671
+#&gt; </span><span style='color: #555555;'>5</span><span>     3 0.973 0.973</div><div class='input'>
 <span class='no'>df</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='group_by.html'>group_by</a></span>(<span class='no'>g</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>with_groups</span>(<span class='kw'>NULL</span>, <span class='no'>mutate</span>, <span class='kw'>x_mean</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='no'>x</span>))</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 3</span><span>
 #&gt; </span><span style='color: #555555;'># Groups:   g [3]</span><span>
-#&gt;       g      x x_mean
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>     1 0.043</span><span style='text-decoration: underline;'>8</span><span>  0.452
-#&gt; </span><span style='color: #555555;'>2</span><span>     1 0.982   0.452
-#&gt; </span><span style='color: #555555;'>3</span><span>     2 0.081</span><span style='text-decoration: underline;'>9</span><span>  0.452
-#&gt; </span><span style='color: #555555;'>4</span><span>     2 0.542   0.452
-#&gt; </span><span style='color: #555555;'>5</span><span>     3 0.610   0.452</div><div class='input'>
+#&gt;       g     x x_mean
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     1 0.698  0.798
+#&gt; </span><span style='color: #555555;'>2</span><span>     1 0.649  0.798
+#&gt; </span><span style='color: #555555;'>3</span><span>     2 0.671  0.798
+#&gt; </span><span style='color: #555555;'>4</span><span>     2 0.997  0.798
+#&gt; </span><span style='color: #555555;'>5</span><span>     3 0.973  0.798</div><div class='input'>
 <span class='co'># NB: grouping can't be restored if you remove the grouping variables</span>
 <span class='no'>df</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='group_by.html'>group_by</a></span>(<span class='no'>g</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>with_groups</span>(<span class='kw'>NULL</span>, <span class='no'>mutate</span>, <span class='kw'>g</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 1</span><span>
-#&gt;        x
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> 0.043</span><span style='text-decoration: underline;'>8</span><span>
-#&gt; </span><span style='color: #555555;'>2</span><span> 0.982 
-#&gt; </span><span style='color: #555555;'>3</span><span> 0.081</span><span style='text-decoration: underline;'>9</span><span>
-#&gt; </span><span style='color: #555555;'>4</span><span> 0.542 
-#&gt; </span><span style='color: #555555;'>5</span><span> 0.610 </div></span></pre>
+#&gt;       x
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> 0.698
+#&gt; </span><span style='color: #555555;'>2</span><span> 0.649
+#&gt; </span><span style='color: #555555;'>3</span><span> 0.671
+#&gt; </span><span style='color: #555555;'>4</span><span> 0.997
+#&gt; </span><span style='color: #555555;'>5</span><span> 0.973</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

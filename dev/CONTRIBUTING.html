@@ -99,7 +99,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="articles/dplyr.html">Intro</a>
+  <a href="articles/dplyr.html">Get started</a>
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
@@ -112,19 +112,28 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="articles/grouping.html">Grouped data</a>
+    </li>
+    <li>
       <a href="articles/two-table.html">Two-table verbs</a>
     </li>
     <li>
-      <a href="articles/window-functions.html">Window functions</a>
+      <a href="articles/base.html">dplyr &lt;-&gt; base R</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Automation</li>
+    <li>
+      <a href="articles/colwise.html">colwise operations</a>
     </li>
     <li>
-      <a href="http://dbplyr.tidyverse.org/articles/dbplyr.html">Databases with dbplyr</a>
+      <a href="articles/rowwise.html">rowwise operations</a>
     </li>
     <li>
       <a href="articles/programming.html">Programming with dplyr</a>
     </li>
+    <li class="divider"></li>
     <li>
-      <a href="articles/compatibility.html">Compatibility</a>
+      <a href="articles/index.html">More...</a>
     </li>
   </ul>
 </li>
@@ -135,7 +144,7 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Release notes</li>
+    <li class="dropdown-header">Releases</li>
     <li>
       <a href="https://www.tidyverse.org/articles/2019/10/dplyr-0-8-4/">Version 0.8.4</a>
     </li>
@@ -154,14 +163,15 @@
     <li>
       <a href="https://www.tidyverse.org/articles/2018/06/dplyr-0.7.5/">Version 0.7.5</a>
     </li>
+    <li class="divider"></li>
     <li>
-      <a href="news/index.html">Change log</a>
+      <a href="news/index.html">Changelog</a>
     </li>
   </ul>
 </li>
         <li>
-  <a href="https://github.com/tidyverse/dplyr">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/tidyverse/dplyr/">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -202,7 +212,7 @@
 <div id="prerequisites" class="section level3">
 <h3 class="hasAnchor">
 <a href="#prerequisites" class="anchor"></a>Prerequisites</h3>
-<p>Before you make a substantial pull request, you should always file an issue and make sure someone from the team agrees that it’s a problem. If you’ve found a bug, create an associated issue and illustrate the bug with a minimal <a href="https://www.tidyverse.org/help/#reprex">reprex</a>.</p>
+<p>Before you make a substantial pull request, you should always file an issue and make sure someone from the team agrees that itâs a problem. If youâve found a bug, create an associated issue and illustrate the bug with a minimal <a href="https://www.tidyverse.org/help/#reprex">reprex</a>.</p>
 </div>
 <div id="pull-request-process" class="section level3">
 <h3 class="hasAnchor">
@@ -212,7 +222,7 @@
 </li>
 <li>Look at the Travis and AppVeyor build status before and after making changes. The <code>README</code> should contain badges for any continuous integration services used by the package.<br>
 </li>
-<li>New code should follow the tidyverse <a href="http://style.tidyverse.org">style guide</a>. You can use the <a href="https://CRAN.R-project.org/package=styler">styler</a> package to apply these styles, but please don’t restyle code that has nothing to do with your PR.<br>
+<li>New code should follow the tidyverse <a href="http://style.tidyverse.org">style guide</a>. You can use the <a href="https://CRAN.R-project.org/package=styler">styler</a> package to apply these styles, but please donât restyle code that has nothing to do with your PR.<br>
 </li>
 <li>We use <a href="https://cran.r-project.org/package=roxygen2">roxygen2</a>, with <a href="https://cran.r-project.org/web/packages/roxygen2/vignettes/markdown.html">Markdown syntax</a>, for documentation.<br>
 </li>

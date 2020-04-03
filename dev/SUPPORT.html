@@ -99,7 +99,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="articles/dplyr.html">Intro</a>
+  <a href="articles/dplyr.html">Get started</a>
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
@@ -112,19 +112,28 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="articles/grouping.html">Grouped data</a>
+    </li>
+    <li>
       <a href="articles/two-table.html">Two-table verbs</a>
     </li>
     <li>
-      <a href="articles/window-functions.html">Window functions</a>
+      <a href="articles/base.html">dplyr &lt;-&gt; base R</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Automation</li>
+    <li>
+      <a href="articles/colwise.html">colwise operations</a>
     </li>
     <li>
-      <a href="http://dbplyr.tidyverse.org/articles/dbplyr.html">Databases with dbplyr</a>
+      <a href="articles/rowwise.html">rowwise operations</a>
     </li>
     <li>
       <a href="articles/programming.html">Programming with dplyr</a>
     </li>
+    <li class="divider"></li>
     <li>
-      <a href="articles/compatibility.html">Compatibility</a>
+      <a href="articles/index.html">More...</a>
     </li>
   </ul>
 </li>
@@ -135,7 +144,7 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Release notes</li>
+    <li class="dropdown-header">Releases</li>
     <li>
       <a href="https://www.tidyverse.org/articles/2019/10/dplyr-0-8-4/">Version 0.8.4</a>
     </li>
@@ -154,14 +163,15 @@
     <li>
       <a href="https://www.tidyverse.org/articles/2018/06/dplyr-0.7.5/">Version 0.7.5</a>
     </li>
+    <li class="divider"></li>
     <li>
-      <a href="news/index.html">Change log</a>
+      <a href="news/index.html">Changelog</a>
     </li>
   </ul>
 </li>
         <li>
-  <a href="https://github.com/tidyverse/dplyr">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/tidyverse/dplyr/">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -190,17 +200,17 @@
 <div id="getting-help-with-dplyr" class="section level1">
 
 <p>Thanks for using dplyr. Before filing an issue, there are a few places to explore and pieces to put together to make the process as smooth as possible.</p>
-<p>Start by making a minimal <strong>repr</strong>oducible <strong>ex</strong>ample using the <a href="http://reprex.tidyverse.org/">reprex</a> package. If you haven’t heard of or used reprex before, you’re in for a treat! Seriously, reprex will make all of your R-question-asking endeavors easier (which is a pretty insane ROI for the five to ten minutes it’ll take you to learn what it’s all about). For additional reprex pointers, check out the <a href="https://www.tidyverse.org/help/">Get help!</a> section of the tidyverse site.</p>
+<p>Start by making a minimal <strong>repr</strong>oducible <strong>ex</strong>ample using the <a href="http://reprex.tidyverse.org/">reprex</a> package. If you havenât heard of or used reprex before, youâre in for a treat! Seriously, reprex will make all of your R-question-asking endeavors easier (which is a pretty insane ROI for the five to ten minutes itâll take you to learn what itâs all about). For additional reprex pointers, check out the <a href="https://www.tidyverse.org/help/">Get help!</a> section of the tidyverse site.</p>
 <p>Armed with your reprex, the next step is to figure out <a href="https://www.tidyverse.org/help/#where-to-ask">where to ask</a>.</p>
 <ul>
-<li>If it’s a question: start with <a href="https://community.rstudio.com/">community.rstudio.com</a>, and/or StackOverflow. There are more people there to answer questions.<br>
+<li>If itâs a question: start with <a href="https://community.rstudio.com/">community.rstudio.com</a>, and/or StackOverflow. There are more people there to answer questions.<br>
 </li>
-<li>If it’s a bug: you’re in the right place, file an issue.<br>
+<li>If itâs a bug: youâre in the right place, file an issue.<br>
 </li>
-<li>If you’re not sure: let the community help you figure it out! If your problem <em>is</em> a bug or a feature request, you can easily return here and report it.</li>
+<li>If youâre not sure: let the community help you figure it out! If your problem <em>is</em> a bug or a feature request, you can easily return here and report it.</li>
 </ul>
-<p>Before opening a new issue, be sure to <a href="https://github.com/tidyverse/dplyr/issues">search issues and pull requests</a> to make sure the bug hasn’t been reported and/or already fixed in the development version. By default, the search will be pre-populated with <code>is:issue is:open</code>. You can <a href="https://help.github.com/articles/searching-issues-and-pull-requests/">edit the qualifiers</a> (e.g. <code>is:pr</code>, <code>is:closed</code>) as needed. For example, you’d simply remove <code>is:open</code> to search <em>all</em> issues in the repo, open or closed.</p>
-<p>If you <em>are</em> in the right place, and need to file an issue, please review the <a href="https://www.tidyverse.org/contribute/#issues">“File issues”</a> paragraph from the tidyverse contributing guidelines.</p>
+<p>Before opening a new issue, be sure to <a href="https://github.com/tidyverse/dplyr/issues">search issues and pull requests</a> to make sure the bug hasnât been reported and/or already fixed in the development version. By default, the search will be pre-populated with <code>is:issue is:open</code>. You can <a href="https://help.github.com/articles/searching-issues-and-pull-requests/">edit the qualifiers</a> (e.g.Â <code>is:pr</code>, <code>is:closed</code>) as needed. For example, youâd simply remove <code>is:open</code> to search <em>all</em> issues in the repo, open or closed.</p>
+<p>If you <em>are</em> in the right place, and need to file an issue, please review the <a href="https://www.tidyverse.org/contribute/#issues">âFile issuesâ</a> paragraph from the tidyverse contributing guidelines.</p>
 <p>Thanks for your help!</p>
 </div>
 

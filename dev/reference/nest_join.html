@@ -102,7 +102,7 @@ is a 0-row tibble." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="../articles/dplyr.html">Intro</a>
+  <a href="../articles/dplyr.html">Get started</a>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -115,19 +115,28 @@ is a 0-row tibble." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/grouping.html">Grouped data</a>
+    </li>
+    <li>
       <a href="../articles/two-table.html">Two-table verbs</a>
     </li>
     <li>
-      <a href="../articles/window-functions.html">Window functions</a>
+      <a href="../articles/base.html">dplyr &lt;-&gt; base R</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Automation</li>
+    <li>
+      <a href="../articles/colwise.html">colwise operations</a>
     </li>
     <li>
-      <a href="http://dbplyr.tidyverse.org/articles/dbplyr.html">Databases with dbplyr</a>
+      <a href="../articles/rowwise.html">rowwise operations</a>
     </li>
     <li>
       <a href="../articles/programming.html">Programming with dplyr</a>
     </li>
+    <li class="divider"></li>
     <li>
-      <a href="../articles/compatibility.html">Compatibility</a>
+      <a href="../articles/index.html">More...</a>
     </li>
   </ul>
 </li>
@@ -138,7 +147,7 @@ is a 0-row tibble." />
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Release notes</li>
+    <li class="dropdown-header">Releases</li>
     <li>
       <a href="https://www.tidyverse.org/articles/2019/10/dplyr-0-8-4/">Version 0.8.4</a>
     </li>
@@ -157,14 +166,15 @@ is a 0-row tibble." />
     <li>
       <a href="https://www.tidyverse.org/articles/2018/06/dplyr-0.7.5/">Version 0.7.5</a>
     </li>
+    <li class="divider"></li>
     <li>
-      <a href="../news/index.html">Change log</a>
+      <a href="../news/index.html">Changelog</a>
     </li>
   </ul>
 </li>
         <li>
-  <a href="https://github.com/tidyverse/dplyr">
-    <span class="fa fa-github fa-lg"></span>
+  <a href="https://github.com/tidyverse/dplyr/">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -283,7 +293,7 @@ dplyr (<code>data.frame</code>)
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>band_members</span> <span class='kw'>%&gt;%</span> <span class='fu'>nest_join</span>(<span class='no'>band_instruments</span>)</div><div class='output co'>#&gt; <span class='message'>Joining, by = "name"</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 3</span><span>
 #&gt;   name  band    band_instruments
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>          
+#&gt; </span><span style='color: #555555;'>*</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>          
 #&gt; </span><span style='color: #555555;'>1</span><span> Mick  Stones  </span><span style='color: #555555;'>&lt;tibble [0 × 1]&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>2</span><span> John  Beatles </span><span style='color: #555555;'>&lt;tibble [1 × 1]&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>3</span><span> Paul  Beatles </span><span style='color: #555555;'>&lt;tibble [1 × 1]&gt;</span><span></div></span></pre>
