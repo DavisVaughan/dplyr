@@ -12,10 +12,11 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="../tidyverse.css" rel="stylesheet">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="../tidyverse.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../tidyverse-2.css" rel="stylesheet">
 <!-- docsearch --><script src="../docsearch.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous">
 <link href="../docsearch.css" rel="stylesheet">
@@ -50,7 +51,7 @@
 
       <div class="navbar-brand-container">
         <a class="navbar-brand" href="../index.html">dplyr</a>
-        <div class="info">
+        <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
           <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.99.9002</span>
         </div>
@@ -83,10 +84,10 @@
     <li class="divider">
     <li class="dropdown-header">Automation</li>
     <li>
-      <a href="../articles/colwise.html">colwise operations</a>
+      <a href="../articles/colwise.html">Column-wise operations</a>
     </li>
     <li>
-      <a href="../articles/rowwise.html">rowwise operations</a>
+      <a href="../articles/rowwise.html">Row-wise operations</a>
     </li>
     <li>
       <a href="../articles/programming.html">Programming with dplyr</a>
@@ -284,7 +285,7 @@
 <h3 class="hasAnchor">
 <a href="#choose-rows-using-their-position-with-slice" class="anchor"></a>Choose rows using their position with <code>slice()</code>
 </h3>
-<p>slice() lets you index rows by their (integer) locations. It allows you to select, remove, and duplicate rows.</p>
+<p><code><a href="../reference/slice.html">slice()</a></code> lets you index rows by their (integer) locations. It allows you to select, remove, and duplicate rows.</p>
 <p>We can get characters from row numbers 5 through 10.</p>
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">starwars</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="../reference/slice.html">slice</a></span>(<span class="fl">5</span>:<span class="fl">10</span>)
 <span class="co">#&gt; # A tibble: 6 x 14</span>
@@ -298,7 +299,8 @@
 <span class="co">#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</span></pre></body></html></div>
 <p>It is accompanied by a number of helpers for common use cases:</p>
 <ul>
-<li>slice_head() and slice_tail() select the first or last rows.</li>
+<li>
+<code><a href="../reference/slice.html">slice_head()</a></code> and <code><a href="../reference/slice.html">slice_tail()</a></code> select the first or last rows.</li>
 </ul>
 <div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">starwars</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="../reference/slice.html">slice_head</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fl">3</span>)
 <span class="co">#&gt; # A tibble: 3 x 14</span>
@@ -310,7 +312,8 @@
 <span class="co">#&gt; # … with 5 more variables: homeworld &lt;chr&gt;, species &lt;chr&gt;, films &lt;list&gt;,</span>
 <span class="co">#&gt; #   vehicles &lt;list&gt;, starships &lt;list&gt;</span></pre></body></html></div>
 <ul>
-<li>slice_sample() randomly selects rows. Use the option prop to choose a certain proportion of the cases.</li>
+<li>
+<code><a href="../reference/slice.html">slice_sample()</a></code> randomly selects rows. Use the option prop to choose a certain proportion of the cases.</li>
 </ul>
 <div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">starwars</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="../reference/slice.html">slice_sample</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fl">5</span>)
 <span class="co">#&gt; # A tibble: 5 x 14</span>
@@ -334,7 +337,8 @@
 <span class="co">#&gt; #   films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</span></pre></body></html></div>
 <p>Use <code>replace = TRUE</code> to perform a bootstrap sample. If needed, you can weight the sample with the <code>weight</code> argument.</p>
 <ul>
-<li>slice_min() and slice_max() select rows with highest or lowest values of a variable. Note that we first must choose only the values which are not NA.</li>
+<li>
+<code><a href="../reference/slice.html">slice_min()</a></code> and <code><a href="../reference/slice.html">slice_max()</a></code> select rows with highest or lowest values of a variable. Note that we first must choose only the values which are not NA.</li>
 </ul>
 <div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">starwars</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/filter.html">filter</a></span>(!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">height</span>)) <span class="kw">%&gt;%</span>
@@ -421,7 +425,7 @@
 <a href="#add-new-columns-with-mutate" class="anchor"></a>Add new columns with <code>mutate()</code>
 </h3>
 <p>Besides selecting sets of existing columns, it’s often useful to add new columns that are functions of existing columns. This is the job of <code><a href="../reference/mutate.html">mutate()</a></code>:</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">starwars</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="../reference/mutate.html">mutate</a></span>(<span class="kw">height_m</span> <span class="kw">=</span>  <span class="no">height</span> / <span class="fl">100</span>)
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">starwars</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="../reference/mutate.html">mutate</a></span>(<span class="kw">height_m</span> <span class="kw">=</span> <span class="no">height</span> / <span class="fl">100</span>)
 <span class="co">#&gt; # A tibble: 87 x 15</span>
 <span class="co">#&gt;   name  height  mass hair_color skin_color eye_color birth_year sex   gender</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; </span>
@@ -445,9 +449,10 @@
 <span class="co">#&gt; # … with 83 more rows, and 6 more variables: gender &lt;chr&gt;, homeworld &lt;chr&gt;,</span>
 <span class="co">#&gt; #   species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;</span></pre></body></html></div>
 <p><code><a href="../reference/mutate.html">dplyr::mutate()</a></code> is similar to the base <code><a href="https://rdrr.io/r/base/transform.html">transform()</a></code>, but allows you to refer to columns that you’ve just created:</p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">starwars</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="../reference/mutate.html">mutate</a></span>(
-  <span class="kw">height_m</span> <span class="kw">=</span> <span class="no">height</span> / <span class="fl">100</span>,
-  <span class="kw">BMI</span> <span class="kw">=</span> <span class="no">mass</span>/(<span class="no">height_m</span>^<span class="fl">2</span>)
+<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">starwars</span> <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="../reference/mutate.html">mutate</a></span>(
+    <span class="kw">height_m</span> <span class="kw">=</span> <span class="no">height</span> / <span class="fl">100</span>,
+    <span class="kw">BMI</span> <span class="kw">=</span> <span class="no">mass</span> / (<span class="no">height_m</span>^<span class="fl">2</span>)
   ) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/select.html">select</a></span>(<span class="no">BMI</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/select_helpers.html">everything</a></span>())
 <span class="co">#&gt; # A tibble: 87 x 16</span>
@@ -461,10 +466,11 @@
 <span class="co">#&gt; #   species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;, starships &lt;list&gt;,</span>
 <span class="co">#&gt; #   height_m &lt;dbl&gt;</span></pre></body></html></div>
 <p>If you only want to keep the new variables, use <code><a href="../reference/mutate.html">transmute()</a></code>:</p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="no">starwars</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="../reference/mutate.html">transmute</a></span>(
-  <span class="kw">height_m</span> <span class="kw">=</span> <span class="no">height</span> / <span class="fl">100</span>,
-  <span class="kw">BMI</span> <span class="kw">=</span> <span class="no">mass</span>/(<span class="no">height_m</span>^<span class="fl">2</span>)
-)
+<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="no">starwars</span> <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="../reference/mutate.html">transmute</a></span>(
+    <span class="kw">height_m</span> <span class="kw">=</span> <span class="no">height</span> / <span class="fl">100</span>,
+    <span class="kw">BMI</span> <span class="kw">=</span> <span class="no">mass</span> / (<span class="no">height_m</span>^<span class="fl">2</span>)
+  )
 <span class="co">#&gt; # A tibble: 87 x 2</span>
 <span class="co">#&gt;   height_m   BMI</span>
 <span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt;</span>
@@ -495,10 +501,7 @@
 <a href="#summarise-values-with-summarise" class="anchor"></a>Summarise values with <code>summarise()</code>
 </h3>
 <p>The last verb is <code><a href="../reference/summarise.html">summarise()</a></code>. It collapses a data frame to a single row.</p>
-<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="no">starwars</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/summarise.html">summarise</a></span>(
-    <span class="kw">height</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">height</span>, <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-  )
+<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="no">starwars</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="../reference/summarise.html">summarise</a></span>(<span class="kw">height</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">height</span>, <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>))
 <span class="co">#&gt; # A tibble: 1 x 1</span>
 <span class="co">#&gt;   height</span>
 <span class="co">#&gt;    &lt;dbl&gt;</span>
@@ -527,16 +530,17 @@
 <span class="no">a2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/select.html">select</a></span>(<span class="no">a1</span>, <span class="no">height</span>, <span class="no">mass</span>)
 <span class="no">a3</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/summarise.html">summarise</a></span>(<span class="no">a2</span>,
   <span class="kw">height</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">height</span>, <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-  <span class="kw">mass</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">mass</span>, <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>))</pre></body></html></div>
+  <span class="kw">mass</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">mass</span>, <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+)</pre></body></html></div>
 <p>Or if you don’t want to name the intermediate results, you need to wrap the function calls inside each other:</p>
 <div class="sourceCode" id="cb20"><html><body><pre class="r"><span class="fu"><a href="../reference/summarise.html">summarise</a></span>(
   <span class="fu"><a href="../reference/select.html">select</a></span>(
     <span class="fu"><a href="../reference/group_by.html">group_by</a></span>(<span class="no">starwars</span>, <span class="no">species</span>, <span class="no">sex</span>),
-      <span class="no">height</span>, <span class="no">mass</span>
-    ),
-    <span class="kw">height</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">height</span>, <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-    <span class="kw">mass</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">mass</span>, <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-  )
+    <span class="no">height</span>, <span class="no">mass</span>
+  ),
+  <span class="kw">height</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">height</span>, <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
+  <span class="kw">mass</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">mass</span>, <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+)
 <span class="co">#&gt; Adding missing grouping variables: `species`, `sex`</span>
 <span class="co">#&gt; # A tibble: 41 x 4</span>
 <span class="co">#&gt; # Groups:   species [38]</span>
@@ -634,8 +638,7 @@
 <h3 class="hasAnchor">
 <a href="#mutating-operations" class="anchor"></a>Mutating operations</h3>
 <p>Mutate semantics are quite different from selection semantics. Whereas <code><a href="../reference/select.html">select()</a></code> expects column names or positions, <code><a href="../reference/mutate.html">mutate()</a></code> expects <em>column vectors</em>. We will set up a smaller tibble to use for our examples.</p>
-<div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="no">starwars</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/select.html">select</a></span>(<span class="no">name</span>, <span class="no">height</span>, <span class="no">mass</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="no">df</span> <span class="kw">&lt;-</span> <span class="no">starwars</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="../reference/select.html">select</a></span>(<span class="no">name</span>, <span class="no">height</span>, <span class="no">mass</span>)</pre></body></html></div>
 <p>When we use <code><a href="../reference/select.html">select()</a></code>, the bare column names stand for their own positions in the tibble. For <code><a href="../reference/mutate.html">mutate()</a></code> on the other hand, column symbols represent the actual column vectors stored in the tibble. Consider what happens if we give a string or a number to <code><a href="../reference/mutate.html">mutate()</a></code>:</p>
 <div class="sourceCode" id="cb28"><html><body><pre class="r"><span class="fu"><a href="../reference/mutate.html">mutate</a></span>(<span class="no">df</span>, <span class="st">"height"</span>, <span class="fl">2</span>)
 <span class="co">#&gt; # A tibble: 87 x 5</span>
