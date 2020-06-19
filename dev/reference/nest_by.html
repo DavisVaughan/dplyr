@@ -43,6 +43,10 @@
 <script src="../pkgdown.js"></script>
 <link href="../tidyverse-2.css" rel="stylesheet">
 
+<!--optional theme-->
+<link href="../.css" rel="stylesheet">
+
+
 
 <!-- docsearch -->
 <script src="../docsearch.js"></script>
@@ -54,9 +58,12 @@
 <meta property="og:title" content="Nest by one or more variables — nest_by" />
 <meta property="og:description" content="
 nest_by() is closely related to group_by(). However, instead of storing
-the group structure in the metadata, it makes it explicit in the data,
-giving each group key a single row with a list-column of data frames that
-contain all the other data." />
+the group structure in the metadata, it is made explicit in the data,
+giving each group key a single row along with a list-column of data frames
+that contain all the other data.
+nest_by() returns a rowwise data frame, which makes operations on the
+grouped data particularly elegant. See vignette(&quot;rowwise&quot;) for more
+details." />
 <meta property="og:image" content="https://dplyr.tidyverse.org/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -101,7 +108,7 @@ contain all the other data." />
         <a class="navbar-brand" href="../index.html">dplyr</a>
         <div class="info hidden-xs hidden-sm">
           <span class="partof">part of the <a href="https://tidyverse.org">tidyverse</a></span>
-          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.8.99.9002</span>
+          <span class="version version-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9000</span>
         </div>
       </div>
     </div>
@@ -154,6 +161,9 @@ contain all the other data." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Releases</li>
+    <li>
+      <a href="https://www.tidyverse.org/blog/2020/06/dplyr-1-0-0/">Version 1.0.0</a>
+    </li>
     <li>
       <a href="https://www.tidyverse.org/articles/2019/10/dplyr-0-8-4/">Version 0.8.4</a>
     </li>
@@ -210,13 +220,16 @@ contain all the other data." />
 
     <div class="ref-description">
     <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
-<p><code>nest_by()</code> is closely related to <code><a href='group_by.html'>group_by()</a></code>. However, instead of storing
-the group structure in the metadata, it makes it explicit in the data,
-giving each group key a single row with a list-column of data frames that
-contain all the other data.</p>
+<p><code><a href='https://dplyr.tidyverse.org/reference/nest_by.html'>nest_by()</a></code> is closely related to <code><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by()</a></code>. However, instead of storing
+the group structure in the metadata, it is made explicit in the data,
+giving each group key a single row along with a list-column of data frames
+that contain all the other data.</p>
+<p><code><a href='https://dplyr.tidyverse.org/reference/nest_by.html'>nest_by()</a></code> returns a <a href='https://dplyr.tidyverse.org/reference/rowwise.html'>rowwise</a> data frame, which makes operations on the
+grouped data particularly elegant. See <code>vignette("rowwise")</code> for more
+details.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nest_by</span>(<span class='no'>.data</span>, <span class='no'>...</span>, <span class='kw'>.key</span> <span class='kw'>=</span> <span class='st'>"data"</span>, <span class='kw'>.keep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>.add</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://dplyr.tidyverse.org/reference/nest_by.html'>nest_by</a></span>(<span class='kw'>.data</span>, <span class='kw'>...</span>, .key = <span class='st'>"data"</span>, .keep = <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -229,8 +242,8 @@ more details.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>In <code><a href='group_by.html'>group_by()</a></code>, variables or computations to group by.
-In <code><a href='group_by.html'>ungroup()</a></code>, variables to remove from the grouping.</p></td>
+      <td><p>In <code><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by()</a></code>, variables or computations to group by.
+In <code><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup()</a></code>, variables to remove from the grouping.</p></td>
     </tr>
     <tr>
       <th>.key</th>
@@ -240,29 +253,31 @@ In <code><a href='group_by.html'>ungroup()</a></code>, variables to remove from 
       <th>.keep</th>
       <td><p>Should the grouping columns be kept in the list column.</p></td>
     </tr>
-    <tr>
-      <th>.add</th>
-      <td><p>When <code>FALSE</code>, the default, <code><a href='group_by.html'>group_by()</a></code> will
-override existing groups. To add to the existing groups, use
-<code>.add = TRUE</code>.</p>
-<p>This argument was previously called <code>add</code>, but that prevented
-creating a new grouping variable called <code>add</code>, and conflicts with
-our naming conventions.</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='rowwise.html'>rowwise()</a></code> data frame. The output has the following properties:</p><ul>
-<li><p>The rows come from the underlying <code><a href='group_data.html'>group_keys()</a></code>.</p></li>
+    <p>A <a href='https://dplyr.tidyverse.org/reference/rowwise.html'>rowwise</a> data frame. The output has the following properties:</p><ul>
+<li><p>The rows come from the underlying <code><a href='https://dplyr.tidyverse.org/reference/group_data.html'>group_keys()</a></code>.</p></li>
 <li><p>The columns are the grouping keys plus one list-column of data frames.</p></li>
-<li><p>Data frame attributes are <strong>not</strong> preserved, because <code>nest_by()</code>
+<li><p>Data frame attributes are <strong>not</strong> preserved, because <code><a href='https://dplyr.tidyverse.org/reference/nest_by.html'>nest_by()</a></code>
 fundamentally creates a new data frame.</p></li>
 </ul>
 
 <p>A tbl with one row per unique combination of the grouping variables.
 The first columns are the grouping variables, followed by a list column of tibbles
 with matching rows of the remaining columns.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Note that <code>df %&gt;% nest_by(x, y)</code> is roughly equivalent to</p><pre><span class='kw'>df</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='kw'>x</span>, <span class='kw'>y</span>) <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span>(data = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>cur_data</a></span>())) <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rowwise.html'>rowwise</a></span>()</pre>
+
+<p>If you want to unnest a nested data frame, you can either use
+<code><a href='https://tidyr.tidyverse.org/reference/nest.html'>tidyr::unnest()</a></code> or take advantage of <code><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise()</a></code>s multi-row behaviour:</p><pre><span class='kw'>nested</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span>(<span class='kw'>data</span>)</pre>
+
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
@@ -271,18 +286,18 @@ with matching rows of the remaining columns.</p>
 implementations (methods) for other classes. See the documentation of
 individual methods for extra arguments and differences in behaviour.</p>
 <p>The following methods are currently available in loaded packages:
-dplyr (<code>data.frame</code>)
+dplyr (<code>data.frame</code>, <code>grouped_df</code>)
 .</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># After nesting, you get one row per group</span>
-<span class='no'>iris</span> <span class='kw'>%&gt;%</span> <span class='fu'>nest_by</span>(<span class='no'>Species</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 2</span><span>
+<span class='kw'>iris</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/nest_by.html'>nest_by</a></span>(<span class='kw'>Species</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 3 x 2</span><span>
 #&gt; </span><span style='color: #555555;'># Rowwise:  Species</span><span>
 #&gt;   Species                  data
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;list&lt;tbl_df[,4]&gt;&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span> setosa               </span><span style='color: #555555;'>[50 × 4]</span><span>
 #&gt; </span><span style='color: #555555;'>2</span><span> versicolor           </span><span style='color: #555555;'>[50 × 4]</span><span>
-#&gt; </span><span style='color: #555555;'>3</span><span> virginica            </span><span style='color: #555555;'>[50 × 4]</span><span></div><div class='input'><span class='no'>starwars</span> <span class='kw'>%&gt;%</span> <span class='fu'>nest_by</span>(<span class='no'>species</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 38 x 2</span><span>
+#&gt; </span><span style='color: #555555;'>3</span><span> virginica            </span><span style='color: #555555;'>[50 × 4]</span><span></div><div class='input'><span class='kw'>starwars</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/nest_by.html'>nest_by</a></span>(<span class='kw'>species</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 38 x 2</span><span>
 #&gt; </span><span style='color: #555555;'># Rowwise:  species</span><span>
 #&gt;    species                  data
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;list&lt;tbl_df[,13]&gt;&gt;</span><span>
@@ -298,23 +313,52 @@ dplyr (<code>data.frame</code>)
 #&gt; </span><span style='color: #555555;'>10</span><span> Gungan               </span><span style='color: #555555;'>[3 × 13]</span><span>
 #&gt; </span><span style='color: #555555;'># … with 28 more rows</span><span></div><div class='input'>
 <span class='co'># The output is grouped by row, which makes modelling particularly easy</span>
-<span class='no'>models</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>nest_by</span>(<span class='no'>cyl</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='mutate.html'>mutate</a></span>(<span class='kw'>model</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>mpg</span> ~ <span class='no'>wt</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data</span>)))
-<span class='no'>models</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 3</span><span>
+<span class='kw'>models</span> <span class='op'>&lt;-</span> <span class='kw'>mtcars</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/nest_by.html'>nest_by</a></span>(<span class='kw'>cyl</span>) <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(model = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='kw'>mpg</span> <span class='op'>~</span> <span class='kw'>wt</span>, data = <span class='kw'>data</span>)))
+<span class='kw'>models</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 3</span><span>
 #&gt; </span><span style='color: #555555;'># Rowwise:  cyl</span><span>
 #&gt;     cyl                data model 
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;list&lt;tbl_df[,10]&gt;&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>     4           </span><span style='color: #555555;'>[11 × 10]</span><span> </span><span style='color: #555555;'>&lt;lm&gt;</span><span>  
 #&gt; </span><span style='color: #555555;'>2</span><span>     6            </span><span style='color: #555555;'>[7 × 10]</span><span> </span><span style='color: #555555;'>&lt;lm&gt;</span><span>  
 #&gt; </span><span style='color: #555555;'>3</span><span>     8           </span><span style='color: #555555;'>[14 × 10]</span><span> </span><span style='color: #555555;'>&lt;lm&gt;</span><span>  </div><div class='input'>
-<span class='no'>models</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='summarise.html'>summarise</a></span>(<span class='kw'>rsq</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='no'>model</span>)$<span class='no'>r.squared</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 2</span><span>
-#&gt; </span><span style='color: #555555;'># Rowwise:  cyl</span><span>
+<span class='kw'>models</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span>(rsq = <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span>(<span class='kw'>model</span>)<span class='op'>$</span><span class='kw'>r.squared</span>)</div><div class='output co'>#&gt; <span class='message'>`summarise()` regrouping output by 'cyl' (override with `.groups` argument)</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 2</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   cyl [3]</span><span>
 #&gt;     cyl   rsq
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>     4 0.509
 #&gt; </span><span style='color: #555555;'>2</span><span>     6 0.465
-#&gt; </span><span style='color: #555555;'>3</span><span>     8 0.423</div></span></pre>
+#&gt; </span><span style='color: #555555;'>3</span><span>     8 0.423</div><div class='input'><span class='co'># This is particularly elegant with the broom functions</span>
+<span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"broom"</span>, quietly = <span class='fl'>TRUE</span>)) {
+  <span class='kw'>models</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span>(<span class='kw'>broom</span>::<span class='fu'><a href='https://rdrr.io/pkg/generics/man/glance.html'>glance</a></span>(<span class='kw'>model</span>))
+  <span class='kw'>models</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span>(<span class='kw'>broom</span>::<span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='kw'>model</span>))
+}</div><div class='output co'>#&gt; <span class='message'>`summarise()` regrouping output by 'cyl' (override with `.groups` argument)</span></div><div class='output co'>#&gt; <span class='message'>`summarise()` regrouping output by 'cyl' (override with `.groups` argument)</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 6 x 6</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   cyl [3]</span><span>
+#&gt;     cyl term        estimate std.error statistic    p.value
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     4 (Intercept)    39.6      4.35       9.10 0.000</span><span style='text-decoration: underline;'>007</span><span>77
+#&gt; </span><span style='color: #555555;'>2</span><span>     4 wt             -</span><span style='color: #BB0000;'>5.65</span><span>     1.85      -</span><span style='color: #BB0000;'>3.05</span><span> 0.013</span><span style='text-decoration: underline;'>7</span><span>    
+#&gt; </span><span style='color: #555555;'>3</span><span>     6 (Intercept)    28.4      4.18       6.79 0.001</span><span style='text-decoration: underline;'>05</span><span>   
+#&gt; </span><span style='color: #555555;'>4</span><span>     6 wt             -</span><span style='color: #BB0000;'>2.78</span><span>     1.33      -</span><span style='color: #BB0000;'>2.08</span><span> 0.091</span><span style='text-decoration: underline;'>8</span><span>    
+#&gt; </span><span style='color: #555555;'>5</span><span>     8 (Intercept)    23.9      3.01       7.94 0.000</span><span style='text-decoration: underline;'>004</span><span>05
+#&gt; </span><span style='color: #555555;'>6</span><span>     8 wt             -</span><span style='color: #BB0000;'>2.19</span><span>     0.739     -</span><span style='color: #BB0000;'>2.97</span><span> 0.011</span><span style='text-decoration: underline;'>8</span><span>    </div><div class='input'>
+<span class='co'># Note that you can also summarise to unnest the data</span>
+<span class='kw'>models</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span>(<span class='kw'>data</span>)</div><div class='output co'>#&gt; <span class='message'>`summarise()` regrouping output by 'cyl' (override with `.groups` argument)</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 32 x 11</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   cyl [3]</span><span>
+#&gt;      cyl   mpg  disp    hp  drat    wt  qsec    vs    am  gear  carb
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>     4  22.8 108      93  3.85  2.32  18.6     1     1     4     1
+#&gt; </span><span style='color: #555555;'> 2</span><span>     4  24.4 147.     62  3.69  3.19  20       1     0     4     2
+#&gt; </span><span style='color: #555555;'> 3</span><span>     4  22.8 141.     95  3.92  3.15  22.9     1     0     4     2
+#&gt; </span><span style='color: #555555;'> 4</span><span>     4  32.4  78.7    66  4.08  2.2   19.5     1     1     4     1
+#&gt; </span><span style='color: #555555;'> 5</span><span>     4  30.4  75.7    52  4.93  1.62  18.5     1     1     4     2
+#&gt; </span><span style='color: #555555;'> 6</span><span>     4  33.9  71.1    65  4.22  1.84  19.9     1     1     4     1
+#&gt; </span><span style='color: #555555;'> 7</span><span>     4  21.5 120.     97  3.7   2.46  20.0     1     0     3     1
+#&gt; </span><span style='color: #555555;'> 8</span><span>     4  27.3  79      66  4.08  1.94  18.9     1     1     4     1
+#&gt; </span><span style='color: #555555;'> 9</span><span>     4  26   120.     91  4.43  2.14  16.7     0     1     5     2
+#&gt; </span><span style='color: #555555;'>10</span><span>     4  30.4  95.1   113  3.77  1.51  16.9     1     1     5     2
+#&gt; </span><span style='color: #555555;'># … with 22 more rows</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
