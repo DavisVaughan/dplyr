@@ -1,6 +1,5 @@
 # dplyr (development version)
 
-# dplyr 1.0.7
 * Joins have undergone a complete overhaul. The purpose of this overhaul was to
   enable more flexible join operations, while also providing tools to perform
   quality control checks directly in the join call (#5914, #5661, #5413, #2240).
@@ -39,6 +38,8 @@
     
   * `check_duplicates` is a new argument to optionally error if the keys of
     `x` or `y` have any duplicate rows.
+
+# dplyr 1.0.7
 
 * `across()` uses the formula environment when inlining them (#5886).
 
