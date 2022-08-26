@@ -281,7 +281,7 @@ across <- function(.cols = everything(),
   size <- vec_size_common(!!!out)
   out <- vec_recycle_common(!!!out, .size = size)
   names(out) <- names
-  out <- new_data_frame(out, n = size, class = c("tbl_df", "tbl"))
+  out <- new_tibble0(out, size = size)
 
   if (.unpack) {
     out <- df_unpack(out, unpack_spec, caller_env)
@@ -387,7 +387,7 @@ across_setup <- function(cols,
     )
     abort(bullets, call = call(across_if_fn))
   }
-  across_cols <- mask$across_cols()
+  across_cols <- mask$current_non_group_data()
 
   vars <- tidyselect::eval_select(
     cols,
@@ -468,7 +468,7 @@ data_mask_top <- function(env, recursive = FALSE, inherit = FALSE) {
 
 c_across_setup <- function(cols, mask) {
   cols <- enquo(cols)
-  across_cols <- mask$across_cols()
+  across_cols <- mask$current_non_group_data()
 
   vars <- tidyselect::eval_select(expr(!!cols), across_cols)
   value <- names(vars)
@@ -768,7 +768,7 @@ df_unpack <- function(x, spec, caller_env, error_call = caller_env()) {
   names(out) <- names
 
   out <- df_list(!!!out, .size = size, .name_repair = "minimal")
-  out <- new_data_frame(out, n = size, class = c("tbl_df", "tbl"))
+  out <- new_tibble0(out, size = size)
 
   vec_as_names(names(out), repair = "check_unique", call = error_call)
 
@@ -786,4 +786,9 @@ apply_unpack_spec <- function(col, outer, spec, caller_env) {
 
   names(col) <- inner
   col
+}
+
+new_tibble0 <- function(x, size) {
+  # ~9x faster than `new_tibble()` for internal usage
+  new_data_frame(x = x, n = size, class = c("tbl_df", "tbl"))
 }

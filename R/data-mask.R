@@ -84,8 +84,8 @@ DataMask <- R6Class("DataMask",
           col
         })
       }
-      nrow <- length(self$current_rows())
-      new_tibble(cols, nrow = nrow)
+      size <- length(self$current_rows())
+      new_tibble0(cols, size = size)
     },
 
     current_cols = function(vars) {
@@ -139,7 +139,7 @@ DataMask <- R6Class("DataMask",
       private$rows
     },
 
-    across_cols = function() {
+    current_non_group_data = function() {
       private$current_data[self$current_non_group_vars()]
     },
 
