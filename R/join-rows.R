@@ -1,7 +1,7 @@
 join_rows <- function(x_key,
                       y_key,
                       ...,
-                      type = c("inner", "left", "right", "full", "semi", "anti", "nest"),
+                      type = c("inner", "left", "right", "full", "semi", "anti"),
                       na_matches = "na",
                       condition = "==",
                       filter = "none",
@@ -223,9 +223,6 @@ standardise_join_incomplete <- function(type, na_matches, x_unmatched) {
   } else if (type == "inner" || type == "right" || type == "semi") {
     # With these joins and `na_matches = "never"`, drop missings from `x`
     "drop"
-  } else if (type == "nest") {
-    # Nest join is special and returns `0` which will be sliced out later
-    0L
   } else {
     # Otherwise we are keeping all keys from `x`
     NA_integer_
@@ -239,9 +236,6 @@ standardise_join_no_match <- function(type, x_unmatched) {
   } else if (type == "inner" || type == "right" || type == "semi") {
     # With these joins, unmatched keys in `x` get dropped
     "drop"
-  } else if (type == "nest") {
-    # Nest join is special and returns `0` which will be sliced out later
-    0L
   } else {
     # Otherwise we are keeping all keys from `x`
     NA_integer_
@@ -249,7 +243,7 @@ standardise_join_no_match <- function(type, x_unmatched) {
 }
 
 standardise_join_remaining <- function(type, y_unmatched) {
-  if (y_unmatched == "error" && (type == "left" || type == "inner" || type == "nest")) {
+  if (y_unmatched == "error" && (type == "left" || type == "inner")) {
     # Ensure that `y` can't drop rows
     "error"
   } else if (type == "right" || type == "full") {

@@ -485,17 +485,17 @@ nest_join.data.frame <- function(x,
                                  keep = NULL,
                                  name = NULL,
                                  ...,
+                                 type = "left",
+                                 nest = "y",
                                  na_matches = c("na", "never"),
                                  unmatched = "drop") {
-
   check_keep(keep)
   na_matches <- check_na_matches(na_matches)
+  type <- arg_match0(type, c("left", "right", "inner", "full"))
+  nest <- arg_match0(nest, c("x", "y", "both"))
+  name <- check_name(name, nest, x_expr = substitute(x), y_expr = substitute(y))
 
-  if (is.null(name)) {
-    name <- as_label(enexpr(y))
-  } else {
-    check_string(name)
-  }
+  y <- auto_copy(x, y, copy = copy)
 
   x_names <- tbl_vars(x)
   y_names <- tbl_vars(y)
@@ -506,8 +506,10 @@ nest_join.data.frame <- function(x,
     by <- as_join_by(by)
   }
 
-  vars <- join_cols(x_names, y_names, by = by, suffix = c("", ""), keep = keep)
-  y <- auto_copy(x, y, copy = copy)
+  # Should `keep` always be `TRUE`? i.e. should `join_mutate()` and
+  # this nest_join() impl be fully in charge of `keep` in the `keep` branch?
+  # would be nice to remove that as an argument to `join_cols()`.
+  vars <- join_cols(x_names, y_names, by = by, suffix = c("", ""), keep = TRUE)
 
   x_in <- as_tibble(x, .name_repair = "minimal")
   y_in <- as_tibble(y, .name_repair = "minimal")
@@ -529,33 +531,223 @@ nest_join.data.frame <- function(x,
   # row of `x` (#6392).
   multiple <- "all"
 
-  rows <- join_rows(
-    x_key = x_key,
-    y_key = y_key,
-    type = "nest",
-    na_matches = na_matches,
-    condition = condition,
-    filter = filter,
-    cross = cross,
-    multiple = multiple,
-    unmatched = unmatched,
-    user_env = caller_env()
-  )
+  if (nest == "y") {
+    rows <- join_rows(
+      x_key = x_key,
+      y_key = y_key,
+      type = type,
+      na_matches = na_matches,
+      condition = condition,
+      filter = filter,
+      cross = cross,
+      multiple = multiple,
+      unmatched = unmatched,
+      user_env = caller_env()
+    )
 
-  y_loc <- vec_split(rows$y, rows$x)$val
+    x_slicer <- rows$x
+    y_slicer <- rows$y
 
-  out <- set_names(x_in[vars$x$out], names(vars$x$out))
+    x_slicer_any_missing <- (type == "right" || type == "full") && vec_any_missing(x_slicer)
+    y_slicer_any_missing <- (type == "left" || type == "full") && vec_any_missing(y_slicer)
 
-  # Modify all columns in one step so that we only need to re-group once
-  new_cols <- vec_cast(out[names(x_key)], x_key)
+    if (y_slicer_any_missing) {
+      y_slicer <- vec_assign(y_slicer, vec_detect_missing(y_slicer), 0L)
+    }
 
-  y_out <- set_names(y_in[vars$y$out], names(vars$y$out))
-  y_out <- map(y_loc, vec_slice, x = y_out)
-  y_out <- map(y_out, dplyr_reconstruct, template = y)
-  new_cols[[name]] <- y_out
+    if (x_slicer_any_missing) {
+      # Group new `y` rows by their keys
+      x_missing <- vec_detect_missing(x_slicer)
+      y_slicer_extra <- vec_slice(y_slicer, x_missing)
+      y_key_extra <- vec_slice(y_key, y_slicer_extra)
+      y_key_extra_id <- vec_group_id(y_key_extra)
+      x_slicer <- vec_assign(x_slicer, x_missing, vec_size(x) + y_key_extra_id)
+    }
 
-  out <- dplyr_col_modify(out, new_cols)
+    split <- vec_split(y_slicer, x_slicer)
+    x_slicer <- split$key
+    y_loc <- split$val
+
+    if (x_slicer_any_missing) {
+      x_missing <- x_slicer > vec_size(x)
+      x_missing <- which(x_missing)
+      x_slicer <- vec_assign(x_slicer, x_missing, NA_integer_)
+    }
+
+    x_out <- set_names(x_in[vars$x$out], names(vars$x$out))
+    y_out <- set_names(y_in[vars$y$out], names(vars$y$out))
+
+    out <- vec_slice(x_out, x_slicer)
+
+    if (!is_true(keep)) {
+      if (is_null(keep)) {
+        merge <- by$x[by$condition == "=="]
+      } else if (is_false(keep)) {
+        # Won't ever contain non-equi conditions
+        merge <- by$x
+      }
+
+      y_out <- y_out[setdiff(names(y_out), merge)]
+
+      # Keys have already been cast to the common type
+      x_merge <- x_key[merge]
+
+      out[merge] <- vec_cast(
+        x = out[merge],
+        to = x_merge,
+        call = error_call
+      )
+
+      if (x_slicer_any_missing) {
+        y_merge <- y_key_extra[merge]
+        y_replacer <- vec_unique_loc(y_key_extra_id)
+        out[x_missing, merge] <- vec_slice(y_merge, y_replacer)
+      }
+    }
+
+    y_out <- map(y_loc, vec_slice, x = y_out)
+    y_out <- map(y_out, dplyr_reconstruct, template = y)
+    out[[name$y]] <- y_out
+  } else if (nest == "x") {
+    rows <- join_rows(
+      x_key = x_key,
+      y_key = y_key,
+      type = type,
+      na_matches = na_matches,
+      condition = condition,
+      filter = filter,
+      cross = cross,
+      multiple = multiple,
+      unmatched = unmatched,
+      user_env = caller_env()
+    )
+
+    x_slicer <- rows$x
+    y_slicer <- rows$y
+
+    x_slicer_any_missing <- (type == "right" || type == "full") && vec_any_missing(x_slicer)
+    y_slicer_any_missing <- (type == "left" || type == "full") && vec_any_missing(y_slicer)
+
+    if (x_slicer_any_missing) {
+      x_slicer <- vec_assign(x_slicer, vec_detect_missing(x_slicer), 0L)
+    }
+
+    if (y_slicer_any_missing) {
+      # Group new `x` rows by their keys
+      y_missing <- vec_detect_missing(y_slicer)
+      x_slicer_extra <- vec_slice(x_slicer, y_missing)
+      x_key_extra <- vec_slice(x_key, x_slicer_extra)
+      x_key_extra_id <- vec_group_id(x_key_extra)
+      y_slicer <- vec_assign(y_slicer, y_missing, vec_size(y) + x_key_extra_id)
+    }
+
+    split <- vec_split(x_slicer, y_slicer)
+    y_slicer <- split$key
+    x_loc <- split$val
+
+    if (y_slicer_any_missing) {
+      y_missing <- y_slicer > vec_size(y)
+      y_missing <- which(y_missing)
+      y_slicer <- vec_assign(y_slicer, y_missing, NA_integer_)
+    }
+
+    x_out <- set_names(x_in[vars$x$out], names(vars$x$out))
+    y_out <- set_names(y_in[vars$y$out], names(vars$y$out))
+
+    out <- vec_slice(y_out, y_slicer)
+
+    if (!is_true(keep)) {
+      if (is_null(keep)) {
+        merge <- by$y[by$condition == "=="]
+      } else if (is_false(keep)) {
+        # Won't ever contain non-equi conditions
+        merge <- by$y
+      }
+
+      x_out <- x_out[setdiff(names(x_out), merge)]
+
+      # Keys have already been cast to the common type
+      y_merge <- y_key[merge]
+
+      out[merge] <- vec_cast(
+        x = out[merge],
+        to = y_merge,
+        call = error_call
+      )
+
+      if (y_slicer_any_missing) {
+        x_merge <- x_key_extra[merge]
+        x_replacer <- vec_unique_loc(x_key_extra_id)
+        out[y_missing, merge] <- vec_slice(x_merge, x_replacer)
+      }
+    }
+
+    x_out <- map(x_loc, vec_slice, x = x_out)
+    x_out <- map(x_out, dplyr_reconstruct, template = x)
+    out[[name$x]] <- x_out
+  }
+
   dplyr_reconstruct(out, x)
+}
+
+check_name <- function(name, nest, x_expr, y_expr, error_call = caller_env()) {
+  out <- list(x = NULL, y = NULL)
+
+  if (is.null(name)) {
+    out$x <- as_label(x_expr)
+    out$y <- as_label(y_expr)
+    return(out)
+  }
+
+  check_character(name, call = error_call)
+
+  if (nest == "both") {
+    size <- 2L
+  } else {
+    size <- 1L
+  }
+
+  size_name <- length(name)
+
+  if (size_name != size) {
+    cli::cli_abort(
+      "{.arg name} must be length {size}, not {size_name}.",
+      call = error_call
+    )
+  }
+
+  if (size_name == 1L) {
+    check_string(
+      name,
+      allow_empty = FALSE,
+      allow_na = FALSE,
+      allow_null = FALSE,
+      call = error_call
+    )
+
+    out$x <- name
+    out$y <- name
+  } else {
+    check_string(
+      name[[1L]],
+      allow_empty = FALSE,
+      allow_na = FALSE,
+      allow_null = FALSE,
+      call = error_call
+    )
+    check_string(
+      name[[2L]],
+      allow_empty = FALSE,
+      allow_na = FALSE,
+      allow_null = FALSE,
+      call = error_call
+    )
+
+    out$x <- name[[1L]]
+    out$y <- name[[2L]]
+  }
+
+  out
 }
 
 # helpers -----------------------------------------------------------------
